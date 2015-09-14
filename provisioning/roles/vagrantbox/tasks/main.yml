@@ -1,0 +1,9 @@
+---
+- name: configure APT
+  copy: src=sources.list dest=/etc/sources.list
+
+- name: update cache
+  apt: update_cache=yes
+
+- name: upgrade packages
+  apt: upgrade=dist

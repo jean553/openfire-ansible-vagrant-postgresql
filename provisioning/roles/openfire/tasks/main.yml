@@ -1,0 +1,6 @@
+---
+- name: download openfire
+  get_url: url={{ OPENFIRE_URL }} dest={{ OPENFIRE_PACKAGE }}
+
+- name: install openfire
+  apt: deb="{{ OPENFIRE_PACKAGE }}"

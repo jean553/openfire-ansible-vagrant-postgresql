@@ -1,0 +1,24 @@
+---
+- name: install PostgreSQL
+  apt: name=postgresql state=present
+
+- name: install Python for Postgres
+  apt: name=python-psycopg2 state=present
+
+- name: create database user
+  sudo_user: postgres
+  postgresql_user: name={{ DB_USER }} password={{ DB_PASSWORD }}
+
+- name: create database
+  sudo_user: postgres
+  postgresql_db: name={{ DB_NAME }} owner={{ DB_USER }}
+
+- name: get database schema
+  shell: cp /usr/share/openfire/resources/database/openfire_postgresql.sql /home/vagrant/.
+
+- name: set permissions for database dump
+  shell: chmod o+rwx /home/vagrant/openfire_postgresql.sql
+
+- name: populate database
+  sudo_user: postgres
+  shell: psql {{ DB_NAME }} < /home/vagrant/openfire_postgresql.sql
