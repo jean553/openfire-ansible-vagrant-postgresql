@@ -13,3 +13,5 @@ Connect to http://localhost:8081/ to prepare the environment after installation.
 ## Use
 
 Connect to http://localhost:8081/index.jsp to access the server administration panel.
+
+By default, the XMPP port redirection is done on 6222.
