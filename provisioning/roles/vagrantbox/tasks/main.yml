@@ -1,6 +1,6 @@
 ---
 - name: configure APT
-  copy: src=sources.list dest=/etc/sources.list
+  copy: src=sources.list dest=/etc/apt/sources.list
 
 - name: update cache
   apt: update_cache=yes
